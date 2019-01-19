@@ -32,6 +32,6 @@
 * `labelhelper\`中是最终的可执行文件以及相应的依赖库
 * 其余文件为源代码
 * 编译环境及依赖：
-	* Visua Studio 2017
+	* Visual Studio 2017
 	* Qt5.6.3
 	* JsonCpp
