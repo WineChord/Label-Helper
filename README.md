@@ -1,5 +1,7 @@
 # Label-Helper
 图片标注小助手
+## 文件说明
+* 可执行文件请点击`release`，到`Assets`处进行下载。
 ## 使用流程
 * 点击`load index`，选择`index.json`进行加载。
 * 点击`load pose`，选择`pose.json`进行加载。
@@ -28,10 +30,7 @@
    ...
 }
 ```
-## 文件说明
-* `labelhelper\`中是最终的可执行文件以及相应的依赖库
-* 其余文件为源代码
-* 编译环境及依赖：
-	* Visual Studio 2017
-	* Qt5.6.3
-	* JsonCpp
+## 编译环境及依赖：
+* Visual Studio 2017
+* Qt5.6.3
+* JsonCpp
