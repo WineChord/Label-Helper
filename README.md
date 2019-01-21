@@ -1,7 +1,8 @@
 # Label-Helper
 图片标注小助手
 ## 文件说明
-* 可执行文件请点击`release`，到`Assets`处进行下载（`release_v3.zip`）。
+* 可执行文件请点击`release`，到`Assets`处进行下载。
+* 2019.1.21 UPD: 解决中文路径问题(`release_v3.1.zip`)
 ## 使用流程
 * 点击`load index`，选择`index.json`进行加载。
 * 点击`load pose`，选择`pose.json`进行加载。
