@@ -4,11 +4,11 @@
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <json.h>
-#include <iostream>
 #include <fstream>
 #include <QString>
 #include <string>
 #include <QFileDialog>
+#include <QTextCodec>
 using namespace std;
 QtGuiApplication1::QtGuiApplication1(QWidget *parent)
 	: QMainWindow(parent)
@@ -22,12 +22,23 @@ void QtGuiApplication1::timerUpdate() {
 	showPic();
 	currentIndex++;
 }
+QString QtGuiApplication1::str2qstr(const string str){
+	return QString::fromLocal8Bit(str.data());
+}
+string QtGuiApplication1::qstr2str(const QString qstr){
+	QByteArray cdata = qstr.toLocal8Bit();
+	return string(cdata);
+}
 void QtGuiApplication1::on_load_index() {
-	QString filename;
-	filename = QFileDialog::getOpenFileName(this, "Files", "", "*.json");
+	QString filename0;
+	filename0 = QFileDialog::getOpenFileName(this, "Files", "", "*.json");
+	QTextCodec *code = QTextCodec::codecForName("GB2312");
+	string filename1 = code->fromUnicode(filename0);
+	QString filename = str2qstr(filename1);
+	//cout << filename;
 	qDebug() << filename;
 	indexPath = filename;
-	ifstream ifs(filename.toStdString());
+	ifstream ifs(filename1);
 	if (!reader.parse(ifs, root))
 		cout << "error loading index.json!" << endl;
 	else {
@@ -55,11 +66,15 @@ void QtGuiApplication1::on_load_index() {
 	}
 }
 void QtGuiApplication1::on_load_pose() {
-	QString filename;
-	filename = QFileDialog::getOpenFileName(this, "Files", "", "*.json");
+	QString filename0;
+	filename0 = QFileDialog::getOpenFileName(this, "Files", "", "*.json");
+	QTextCodec *code = QTextCodec::codecForName("GB2312");
+	string filename1 = code->fromUnicode(filename0);
+	QString filename = str2qstr(filename1);
+	//cout << filename;
 	qDebug() << filename;
 	posePath = filename;
-	ifstream ifs2(filename.toStdString());
+	ifstream ifs2(filename1);
 	if (!reader.parse(ifs2, rootW)) 
 		cout << "error loading pose.json!" << endl;
 	else {
@@ -67,9 +82,12 @@ void QtGuiApplication1::on_load_pose() {
 	}
 }
 void QtGuiApplication1::on_load_images() {
-	QString filename;
-	filename = QFileDialog::getExistingDirectory(this, "Folders", "");
-	qDebug() << filename;
+	QString filename0;
+	filename0 = QFileDialog::getExistingDirectory(this, "Folders", "");
+	QTextCodec *code = QTextCodec::codecForName("GB2312");
+	string filename1 = code->fromUnicode(filename0);
+	QString filename = str2qstr(filename1);
+	//cout << filename;
 	imagesDir = filename;
 	showPic();
 }
@@ -142,7 +160,7 @@ void QtGuiApplication1::showAgain() {
 	showPic();
 	Json::StyledWriter sw;
 	ofstream os;
-	os.open(posePath.toStdString());
+	os.open(qstr2str(posePath));
 	os << sw.write(rootW);
 	os.close();
 }

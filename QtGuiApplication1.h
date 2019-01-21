@@ -6,6 +6,8 @@
 #include <QLineEdit>
 #include <vector>
 #include <QTimer>
+#include <iostream>
+using namespace std;
 class QtGuiApplication1 : public QMainWindow
 {
 	Q_OBJECT
@@ -16,6 +18,8 @@ public:
 private slots:
 	void on_OpenFiles_clicked();
 	void timerUpdate();
+	QString str2qstr(const string str);
+	string qstr2str(const QString qstr);
 	void on_load_index();
 	void on_load_pose();
 	void on_load_images();
