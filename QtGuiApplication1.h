@@ -3,10 +3,19 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_QtGuiApplication1.h"
 #include <json.h>
-#include <QLineEdit>
-#include <vector>
-#include <QTimer>
+#include <string>
 #include <iostream>
+#include <fstream>
+
+#include <QLineEdit>
+#include <QTimer>
+#include <QPixmap>
+#include <QDebug>
+#include <QMessageBox>
+#include <QKeyEvent>
+#include <QString>
+#include <QFileDialog>
+#include <QTextCodec>
 using namespace std;
 class QtGuiApplication1 : public QMainWindow
 {
@@ -16,10 +25,7 @@ public:
 	QtGuiApplication1(QWidget *parent = Q_NULLPTR);
 
 private slots:
-	void on_OpenFiles_clicked();
 	void timerUpdate();
-	QString str2qstr(const string str);
-	string qstr2str(const QString qstr);
 	void on_load_index();
 	void on_load_pose();
 	void on_load_images();
@@ -27,7 +33,6 @@ private slots:
 	void on_xKey();
 	void on_text_changed();
 	void on_slider_moved();
-	//void slot1();
 private:
 	Ui::QtGuiApplication1Class ui;
 	QTimer *mTimer;
@@ -50,4 +55,6 @@ private:
 	void showAgain();
 	void writePos(int pos);
 	void keyPressEvent(QKeyEvent * event);
+	QString str2qstr(const string str);
+	string qstr2str(const QString qstr);
 };

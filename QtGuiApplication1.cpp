@@ -1,14 +1,5 @@
 #include "QtGuiApplication1.h"
-#include <QPixmap>
-#include <QDebug>
-#include <QMessageBox>
-#include <QKeyEvent>
-#include <json.h>
-#include <fstream>
-#include <QString>
-#include <string>
-#include <QFileDialog>
-#include <QTextCodec>
+
 using namespace std;
 QtGuiApplication1::QtGuiApplication1(QWidget *parent)
 	: QMainWindow(parent)
@@ -211,8 +202,4 @@ void QtGuiApplication1::keyPressEvent(QKeyEvent* event) {
 		qDebug() << "Qt::Keypressed";
 		break;
 	}
-}
-
-void QtGuiApplication1::on_OpenFiles_clicked() {
-	
 }
